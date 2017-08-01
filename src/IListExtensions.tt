@@ -1,0 +1,21 @@
+﻿<#@ template hostspecific="true" debug="false" language="C#" #>  
+<#@ output extension=".cs" #>  
+<#@ import namespace="System.IO" #>  
+<#@ import namespace="System.Text" #>  
+<#		string text = File.ReadAllText(this.Host.ResolvePath("ArrayExtensions.cs"));  
+		var  buffer = new StringBuilder(text);
+		buffer.Replace("class ArrayExtensions", "class IListExtensions");
+		buffer.Replace("this TSource[] items", "this IList<TSource> items");
+		buffer.Replace("items.Length", "items.Count");
+		buffer.Replace("this int[] items", "this IList<int> items");
+		buffer.Replace("this int?[] items", "this IList<int?> items");
+		buffer.Replace("this float[] items", "this IList<float> items");
+		buffer.Replace("this float?[] items", "this IList<float?> items");
+		buffer.Replace("this long[] items", "this IList<long> items");
+		buffer.Replace("this long?[] items", "this IList<long?> items");
+		buffer.Replace("this double[] items", "this IList<double> items");
+		buffer.Replace("this double?[] items", "this IList<double?> items");
+		buffer.Replace("this decimal[] items", "this IList<decimal> items");
+		buffer.Replace("this decimal?[] items", "this IList<decimal?> items");
+		this.Write(buffer.ToString());
+#>    
