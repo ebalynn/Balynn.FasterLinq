@@ -61,7 +61,7 @@ namespace FasterLinq.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sequence contains no elements.
+        ///   Looks up a localized string similar to The sequence contains no elements.
         /// </summary>
         internal static string NoElements {
             get {
@@ -70,7 +70,7 @@ namespace FasterLinq.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sequence contains no matching elements.
+        ///   Looks up a localized string similar to The sequence contains no matching elements.
         /// </summary>
         internal static string NoMatch {
             get {

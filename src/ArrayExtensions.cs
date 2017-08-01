@@ -765,8 +765,8 @@ namespace System.Linq
             return default(TSource);
         }
         #endregion First
+        
         #region Last
-
         public static TSource Last<TSource>(this TSource[] items)
         {
             if (items.Length != 0)
@@ -827,8 +827,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int result = int.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            int result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element > result)
@@ -844,9 +844,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int? result = default(int?);
+            int? result = items[0];
             int value = int.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value > value)
@@ -864,8 +864,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long result = long.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            long result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element > result)
@@ -882,9 +882,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long? result = default(long?);
+            long? result = items[0];
             long value = long.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value > value)
@@ -902,8 +902,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double result = double.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            double result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element > result)
@@ -920,9 +920,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double? result = default(double?);
+            double? result = items[0];
             double value = double.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value > value)
@@ -940,8 +940,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float result = float.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            float result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element > result)
@@ -958,9 +958,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float? result = default(float?);
+            float? result = items[0];
             float value = float.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value > value)
@@ -978,8 +978,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal result = decimal.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            decimal result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element > result)
@@ -996,9 +996,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal? result = default(decimal?);
+            decimal? result =items[0];
             decimal value = decimal.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value > value)
@@ -1016,9 +1016,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            var result = default(TSource);
+            var result = items[0];
             var comparer = Comparer<TSource>.Default;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (comparer.Compare(element, result) > 0)
@@ -1035,8 +1035,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int result = int.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            int result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1054,9 +1054,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int? result = default(int?);
+            int? result = selector(items[0]);
             int value = int.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1075,8 +1075,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long result = long.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            long result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = selector(items[i]);
                 if (element > result)
@@ -1093,9 +1093,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long? result = default(long?);
+            long? result = selector(items[0]);
             long value = long.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1114,8 +1114,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float result = float.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            float result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1133,9 +1133,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float? result = default(float?);
+            float? result = selector(items[0]);
             float value = float.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1155,8 +1155,8 @@ namespace System.Linq
                 throw Error.NoElements();
             }
 
-            double result = double.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            double result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1174,9 +1174,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double? result = default(double?);
+            double? result = selector(items[0]);
             double value = double.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1195,8 +1195,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal result = decimal.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            decimal result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1215,9 +1215,9 @@ namespace System.Linq
                 throw Error.NoElements();
             }
 
-            decimal? result = default(decimal?);
+            decimal? result = selector(items[0]);
             decimal value = decimal.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = selector(items[i]);
                 if (element.HasValue && element.Value > value)
@@ -1235,9 +1235,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            TResult result = default(TResult);
+            TResult result = selector(items[0]);
             var comparer = Comparer<TResult>.Default;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1257,8 +1257,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int result = int.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            int result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element < result)
@@ -1274,9 +1274,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int? result = default(int?);
+            int? result = items[0];
             int value = int.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value < value)
@@ -1294,8 +1294,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long result = long.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            long result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element < result)
@@ -1312,9 +1312,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long? result = default(long?);
+            long? result = items[0];
             long value = long.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value < value)
@@ -1332,8 +1332,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double result = double.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            double result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element < result)
@@ -1350,9 +1350,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double? result = default(double?);
+            double? result = items[0];
             double value = double.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value < value)
@@ -1370,8 +1370,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float result = float.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            float result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element < result)
@@ -1388,9 +1388,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float? result = default(float?);
+            float? result = items[0];
             float value = float.MinValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value < value)
@@ -1408,8 +1408,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal result = decimal.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            decimal result = items[0];
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element < result)
@@ -1426,9 +1426,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal? result = default(decimal?);
+            decimal? result = items[0];
             decimal value = decimal.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (element.HasValue && element.Value < value)
@@ -1446,9 +1446,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            TSource result = default(TSource);
+            TSource result = items[0];
             var comparer = Comparer<TSource>.Default;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 if (comparer.Compare(element, result) < 0)
@@ -1465,8 +1465,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int result = int.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            int result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = selector(items[i]);
                 if (element < result)
@@ -1483,9 +1483,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            int? result = default(int?);
+            int? result = selector(items[0]);
             int value = int.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1504,8 +1504,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long result = long.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            long result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1523,9 +1523,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            long? result = default(long?);
+            long? result = selector(items[0]);
             long value = long.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1544,8 +1544,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            float result = float.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            float result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1565,7 +1565,7 @@ namespace System.Linq
             }
             float? result = default(float?);
             float value = float.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1584,8 +1584,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double result = double.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            double result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = selector(items[i]);
                 if (element < result)
@@ -1602,9 +1602,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            double? result = default(double?);
+            double? result = selector(items[0]);
             double value = double.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1623,8 +1623,8 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal result = decimal.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            decimal result = selector(items[0]);
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1642,9 +1642,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            decimal? result = default(decimal?);
+            decimal? result = selector(items[0]);
             decimal value = decimal.MaxValue;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
@@ -1663,9 +1663,9 @@ namespace System.Linq
             {
                 throw Error.NoElements();
             }
-            TResult result = default(TResult);
+            TResult result = selector(items[0]);
             var comparer = Comparer<TResult>.Default;
-            for (var i = 0; i < items.Length; i++)
+            for (var i = 1; i < items.Length; i++)
             {
                 var element = items[i];
                 var converted = selector(element);
